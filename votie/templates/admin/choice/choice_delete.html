@@ -1,0 +1,35 @@
+
+
+{% extends 'admin/poll/poll_page.html' %}
+ {% block feature%}
+<td>  <a href="{% url 'poll_detail' poll.id %}" class="btn btn-warning btn-sm" role="button">Vote</a></td>
+{%endblock%}
+
+
+{%load static%}
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+     <div><h1>Delete this Choice?</h1></div>
+          <section class="py-5">
+    {%csrf_token%}
+    {{form}}
+     <br/>
+     <div class="form-group row">
+                        <div class="col-md-7 ml-auto">
+
+                          <button type="submit" class="btn btn-primary">Delete</button>
+
+                        </div>
+                      </div>
+</form>
+          </section>
+
+{%endblock%}
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+
+
+
+{% extends 'admin/poll/poll_page.html' %}
+ {% block feature%}
+<td>  <a href="{% url 'poll_detail' poll.id %}" class="btn btn-warning btn-sm" role="button">Vote</a></td>
+{%endblock%}
+
+
+{%load static%}
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+     <div><h1> Result for The Post of the {{ poll.text }}</h1></div>
+          <section class="py-5">
+              {% for choice in poll.choice_set.all %}
+
+          <img src="{{ choice.choice_image.url }}"  style="max-width: 8rem;">
+              <br/>
+
+              <li><b>{{choice.choice_text}} - {{ choice.num_votes}} votes</b></li>
+
+              <br/>
+              <hr>
+        {% endfor%}
+
+
+
+          </section>
+
+</div>
+{%endblock%}

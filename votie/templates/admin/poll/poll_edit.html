@@ -1,0 +1,53 @@
+
+
+{% extends 'admin/poll/poll_page.html' %}
+ {% block feature%}
+<td>  <a href="{% url 'poll_detail' poll.id %}" class="btn btn-warning btn-sm" role="button">Vote</a></td>
+{%endblock%}
+
+
+{%load static%}
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+     <div><h1>{{ poll.text }}</h1></div>
+          <section class="py-5">
+
+
+<form method="post">
+    {%csrf_token%}
+    <tr><th><label for="id_text"><b>Position</b></label></th><td>
+        <textarea name="text" cols="40" rows="5" class="form-control" col="20" maxlength="202" id="id_text">
+     {{poll.text}}</textarea></td></tr>
+     <br/>
+     <div class="form-group row">
+                        <div class="col-md-7 ml-auto">
+
+                          <button type="submit" class="btn btn-primary">Submit</button>
+
+    <a href="{% url 'add_choice' poll.id%}" class="btn btn-warning btn-sm" role="button">Add Choice</a>
+
+                        </div>
+                      </div>
+</form>
+          </section>
+
+<div class="container">
+        {% for choice in poll.choice_set.all %}
+
+       {{choice}}
+    <td><a href="{% url 'choice_edit' choice.id %}" class="btn btn-warning btn-sm" role="button">Edit</a>
+                        <a href="{% url 'delete_choice' choice.id %}" class="btn btn-warning btn-sm" role="button">Delete</a>
+
+    </td>
+<hr>
+        {% endfor%}
+</div>
+{%endblock%}
+
+
+
+
+
+

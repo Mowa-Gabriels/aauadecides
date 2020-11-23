@@ -1,0 +1,56 @@
+
+{% extends 'admin/poll/poll_page.html' %}
+ {% block feature%}
+<td>  <a href="{% url 'poll_detail' poll.id %}" class="btn btn-warning btn-sm" role="button">Vote</a></td>
+{%endblock%}
+
+
+{%load static%}
+
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+
+     {% if messages %}
+{% for message in messages %}
+
+     <div class="alert alert-{{ message.tags }}" role="alert">
+
+  <strong>Hello {{user}}, {{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+     <div><h1>{{ poll.text }}</h1></div>
+          <section class="py-5">
+
+
+
+
+ <form method="post">
+     {%csrf_token%}
+     <tr><th><label for="id_text"><b>Position:</b></label></th><td><textarea name="text" cols="40" rows="5" class="form-control" col="20" maxlength="202" id="id_text">
+</textarea></td></tr>
+     <br/>
+     <tr><th><label for="id_choice1"><b>First Choice:</b></label></th><td><input type="text" name="choice1" class="form-control" maxlength="100" minlength="3" required id="id_choice1"></td></tr>
+           <br/>
+     <div class="form-group row">
+                        <div class="col-md-7 ml-auto">
+
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+
+</form>
+          </section>
+ </div>
+{%endblock%}
+
+
+</body>
+
+</html>

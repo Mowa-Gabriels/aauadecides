@@ -1,0 +1,57 @@
+
+{% extends 'admin/poll/poll_page.html' %}
+
+
+
+{%load static%}
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+
+     {% if messages %}
+{% for message in messages %}
+
+     <div class="alert alert-{{ message.tags }}" role="alert">
+
+  <strong>Hello {{user}}, {{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+     <div><h1>{{ poll.text }}</h1></div>
+          <section class="py-5">
+ <form action="{% url 'vote' poll.id%}" method="post">
+
+
+        {% csrf_token %}<ul>
+
+        {% for choice in poll.choice_set.all %}
+
+          <img src="{{ choice.choice_image.url }}" alt="Jason Doe" style="max-width: 14rem;" class="img-fluid rounded-circle shadow"></a>
+
+
+    <br/>
+
+        <input type="radio"
+               name="choice"
+               id="choice{{ forloop.counter }}"
+               value="{{choice.id}}"/>
+     <label for="choice{{ forloop.counter }}"><b>{{choice.choice_text}}</b></label>
+
+
+     <hr>
+
+        {% endfor%}
+
+
+        <input type="submit" value="Vote" />
+</ul>
+
+    </form>
+          </section>
+ </div>
+{%endblock%}

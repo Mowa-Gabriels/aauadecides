@@ -1,0 +1,6 @@
+{% extends 'admin/poll/poll_page.html' %}
+ {% block feature%}
+<td>  <a href="{% url 'poll_detail' poll.id %}" class="btn btn-warning btn-sm" role="button">Vote</a></td>
+{%endblock%}
+
+

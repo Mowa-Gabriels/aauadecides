@@ -1,0 +1,34 @@
+
+{% extends 'admin/poll/poll_page.html' %}
+
+
+
+{%load static%}
+{% block content%}
+
+ <div class="container-fluid px-xl-7">
+
+
+     <div><h1>Make a complaint</h1></div>
+          <section class="py-5">
+
+      <form action="" method="post" role="form" class="php-email-form mt-4">
+        {% csrf_token%}
+
+
+        <div class="form-group">
+          <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Make a Complaint"></textarea>
+          <div class="validate"></div>
+        </div>
+        <br/>
+     <div class="form-group row">
+                        <div class="col-md-7 ml-auto">
+
+                          <button type="submit" class="btn btn-primary">Submit</button>
+           </div>
+                      </div> </form>
+
+              </form>
+          </section>
+ </div>
+{%endblock%}

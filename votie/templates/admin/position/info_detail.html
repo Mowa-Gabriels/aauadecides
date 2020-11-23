@@ -1,0 +1,47 @@
+
+{% extends 'admin/poll/poll_page.html' %}
+
+
+
+{%load static%}
+
+{% block content%}
+
+
+ <div class="container-fluid px-xl-7">
+<h1>{{poss.text }}</h1>
+
+          <section class="py-5">
+
+<br/>
+
+<div>
+    {% for candidate in poss.candidate_set.all %}
+
+     <img src="{{candidate.image.url}}"  style="max-width: 10rem;" class="img-fluid rounded-circle shadow"></a>
+    <a href="{% url 'edit_candidate' candidate.id %}" class="btn btn-warning btn-sm" role="button">Edit</a>
+
+    <br/>
+ <div>
+<h6>
+        <br>Name: {{candidate.first_name}} {{candidate.last_name}}
+        <br>Faculty: {{candidate.faculty}}
+        <br>Department: {{candidate.Department}}
+        <br>Profile: {{candidate.description}}
+</h6>
+        <hr>
+    </div><br/><br/>
+    {%endfor%}
+</div>
+          </section>
+ </div>
+
+
+{%endblock%}
+
+
+
+
+
+
+
