@@ -162,7 +162,8 @@ def send_update(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = settings.EMAIL_HOST_USER
-        recipients = list(User.objects.filter(is_active=True).values_list('email', flat=True))
+            recipients = list(User.objects.filter(is_active=True).values_list('email', flat=True))
+            
 
             try:
                 msg = EmailMultiAlternatives(subject, message, from_email, bcc=recipients)
