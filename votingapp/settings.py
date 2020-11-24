@@ -149,6 +149,7 @@ EMAIL_HOST_PASSWORD = 'krmdnqtaapasoaml'
 #AUTHENTICATION
 LOGIN_REDIRECT_URL = 'poll_page'
 LOGIN_URL= 'login'
+DEBUG_PROPAGATE_EXCEPTIONS=True
 
 if os.getcwd() == '/app':
     DEBUG=False
