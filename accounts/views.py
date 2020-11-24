@@ -23,7 +23,7 @@ def voters_page(request):
 
 @method_decorator([login_required, admin_required], name='dispatch')
 class VoterSignUp(LoginRequiredMixin,CreateView):
-    template_name = 'registration/voter/signup_page.html'
+    template_name = 'Registration/voter/signup_page.html'
     form_class = VoterSignUpForm
     model = User
     success_url = reverse_lazy('poll_page')
@@ -34,7 +34,7 @@ class VoterSignUp(LoginRequiredMixin,CreateView):
 
 @method_decorator([login_required, admin_required], name='dispatch')
 class AdminSignUp(LoginRequiredMixin,CreateView):
-    template_name = 'registration/admin/signup_page.html'
+    template_name = 'Registration/admin/signup_page.html'
     form_class = AdminSignUpForm
     model = User
     success_url = reverse_lazy('poll_page')
